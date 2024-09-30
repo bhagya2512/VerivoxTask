@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Leave_Balance</fullName>
+    <active>true</active>
+    <errorConditionFormula>(Employee_Name__r.Current_Leave_Balance__c  -  Number_of_Days__c) &lt; 0</errorConditionFormula>
+    <errorDisplayField>End_Date__c</errorDisplayField>
+    <errorMessage>Leave Balance Cannot go below 0</errorMessage>
+</ValidationRule>

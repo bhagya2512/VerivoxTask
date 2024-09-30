@@ -1,7 +1,7 @@
 public with sharing class LeaveApplicationTriggerHandler {
 
 
-    public void sendLeaveUpdateInformation(List<Leave_Application__c> approvedLeaves, Map<Id,Leave_Application__c> oldMap) {
+    public static void sendLeaveUpdateInformation(List<Leave_Application__c> approvedLeaves, Map<Id,Leave_Application__c> oldMap) {
         for (Leave_Application__c leave : approvedLeaves) {
             Leave_Application__c oldLeave = oldMap.get(leave.Id);
             if (leave.Status__c == 'Approved' && oldLeave.Status__c != 'Approved') {
@@ -15,7 +15,7 @@ public with sharing class LeaveApplicationTriggerHandler {
         }
     }
 
-    private void updateERPSystem(List<Leave_Application__c> approvedLeaves) {
+    public static void updateERPSystem(List<Leave_Application__c> approvedLeaves) {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
         request.setEndpoint('https://your-erp-system/api/updateVacationBalance');
@@ -38,7 +38,7 @@ public with sharing class LeaveApplicationTriggerHandler {
         }
     }
 
-    private Decimal calculateNewBalance(Leave_Application__c leave) {
+    public static Decimal calculateNewBalance(Leave_Application__c leave) {
         Decimal newBalance;
         List<User> userInfo = [ SELECT Id, Name, Email, Current_Leave_Balance__c, Leave_Days_To_Be_Approved__c, ManagerId
                                 FROM User

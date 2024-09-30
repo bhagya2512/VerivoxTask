@@ -1,3 +1,8 @@
 trigger LeaveApplicationTrigger on Leave_Application__c (after update) {
-       LeaveApplicationTriggerHandler.sendLeaveUpdateInformation(Trigger.new, Trigger.oldMap);
+        if(Trigger.isUpdate){
+            if(Trigger.isAfter){
+              LeaveApplicationTriggerHandler.sendLeaveUpdateInformation(Trigger.new, Trigger.oldMap);
+            }
+       }
+
 }

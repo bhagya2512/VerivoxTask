@@ -13,7 +13,6 @@ export default class LeaveApplicationMainTabs extends LightningElement {
     }
     @wire(checkIfUserisManager, {recordId:'$recordId'})
     wiredcheckIfUserisManager(result) {
-        console.log("Data>>",result.data);
         this.isManager = result.data;
     }
 }

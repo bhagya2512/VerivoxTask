@@ -43,7 +43,7 @@ export default class LeaveApprovalRejection extends LightningElement {
                         //display toast message
                         this.dispatchEvent(
                             new ShowToastEvent({
-                                title: "Success ! ",
+                                title: "Approved!",
                                 message: 'The leave has been approved!',
                                 variant: "success"
                             })
@@ -56,9 +56,9 @@ export default class LeaveApprovalRejection extends LightningElement {
                         //display toast message
                         this.dispatchEvent(
                             new ShowToastEvent({
-                                title: "Success ! ",
+                                title: "Rejected ",
                                 message: 'The leave has been rejected!',
-                                variant: "success"
+                                variant: "warning"
                             })
                         );
                         
