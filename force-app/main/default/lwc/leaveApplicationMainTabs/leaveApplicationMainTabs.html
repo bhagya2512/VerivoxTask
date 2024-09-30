@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="My Leave Balances" icon-name="custom:custom14">
+        <div class="slds-grid slds-gutters_direct slds-var-p-around_small">
+            <!-- Annual Leave Card -->
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-12">
+                <div class="slds-box slds-theme_default">
+                    <span class="slds-text-heading_small">Annual Leave Balance</span>
+                    <p class="slds-text-heading_large">
+                        <lightning-icon icon-name="utility:world" size="small" class="icon-align slds-var-p-right_small"></lightning-icon
+                        >{netBalance.currentBalance}
+                    </p>
+                    <p>Days Available</p>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-12">
+                <div class="slds-box slds-theme_default">
+                    <span class="slds-text-heading_small">Days Pending Approval</span>
+                    <p class="slds-text-heading_large">
+                        <lightning-icon icon-name="utility:world" size="small" class="icon-align slds-var-p-right_small"></lightning-icon
+                        >{netBalance.balanceToBeApproved}
+                    </p>
+                    <p>Days Approval Pending</p>
+                </div>
+            </div>
+
+        </div>
+    </lightning-card>
+    <h1>Is Suer Manager {isManager}</h1>
+    <lightning-card title="Leave Requests Summary" icon-name="custom:custom96">
+        <template if:true={isManager}>
+        <lightning-tabset>
+          <lightning-tab title="My Requests" label="My Requests">
+            <c-leave-application></c-leave-application>
+          </lightning-tab>
+            <lightning-tab title="Leave Requests Summary" label="My Team's Requests">
+                <c-leaves-manager-view></c-leaves-manager-view>
+            </lightning-tab>
+        </lightning-tabset>
+        </template>
+        <template if:false={isManager}>
+            <lightning-tabset>
+              <lightning-tab title="My Requests" label="My Requests">
+                <c-leave-application></c-leave-application>
+              </lightning-tab>
+            </lightning-tabset>
+            </template>
+      </lightning-card>
+</template>

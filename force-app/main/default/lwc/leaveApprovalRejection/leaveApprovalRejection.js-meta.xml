@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Leave Application Approval Page</masterLabel>
+    <description>This is the leave application approval page for Managers.</description>
+  <targets>
+      <target>lightning__FlowScreen</target>
+      <target>lightning__RecordPage</target>
+      
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightning__FlowScreen,lightning__RecordPage">
+            <property name="recordId" type="String" label="Enter Record Id"/>
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
