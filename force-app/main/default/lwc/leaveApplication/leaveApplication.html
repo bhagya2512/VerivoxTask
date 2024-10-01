@@ -36,11 +36,13 @@
                                 <lightning-input-field field-name="Employee_Name__c" value={currentUserId}></lightning-input-field>
                                 <lightning-input-field field-name="Start_Date__c" required="" value={startDate} onchange={handleStartDate}></lightning-input-field>
                                 <lightning-combobox label="Type" options={typeOptions} value={leaveType} onchange={handleTypeChange} required></lightning-combobox>
+                                <lightning-output-field field-name="Current_Leave_Balance__c" readonly value={leaveBalance}></lightning-output-field>
                             </div>
                             <div class="slds-col">
                                 <lightning-output-field field-name="Status__c" readonly value={leaveStatus}></lightning-output-field>
                                 <lightning-input-field field-name="End_Date__c" value={endDate}  required onchange={handleLeaveDayCount}></lightning-input-field>
                                 <lightning-input-field field-name="Number_of_Days__c" value={leaveDayCount} aria-disabled="true" required disabled></lightning-input-field>
+                                <lightning-output-field field-name="Leave_Balance_after_Approval__c" readonly value={leaveBalanceAfterApproval}></lightning-output-field>
                             </div>
                         </div>
                         <lightning-input-field field-name="Type__c" value={leaveType} aria-hidden="true" class="slds-hide" hidden></lightning-input-field>

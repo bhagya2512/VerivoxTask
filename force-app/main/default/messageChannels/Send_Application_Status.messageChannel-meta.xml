@@ -1,16 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Message channel to send approval status</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>This is the leave application record</description>
+        <fieldName>recordId</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>This is the leave application status</description>
+        <fieldName>approvalStatus</fieldName>
+    </lightningMessageFields>
     <masterLabel>SendApplicationStatus</masterLabel>
-  <isExposed>true</isExposed>
-  <description>Message channel to send approval status</description>
-
-  <lightningMessageFields>
-    <fieldName>recordId</fieldName>
-    <description>This is the leave application record</description>
-  </lightningMessageFields>
-  <lightningMessageFields>
-    <fieldName>approvalStatus</fieldName>
-    <description>This is the leave application status</description>
-  </lightningMessageFields>
-  
-    </LightningMessageChannel>
+</LightningMessageChannel>

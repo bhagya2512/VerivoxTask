@@ -3,6 +3,7 @@ import { LightningElement, api, wire, track } from 'lwc';
 import getMyLeaves from "@salesforce/apex/LeaveApplicationController.getMyLeaves";
 import getLeaveTypeValues from "@salesforce/apex/LeaveApplicationController.getLeaveTypeValues";
 import calculateTotalDays from "@salesforce/apex/LeaveApplicationController.getTotalLeaveDays";
+import getLeaveBalance from "@salesforce/apex/LeaveApplicationController.getLeaveBalance";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import Id from "@salesforce/user/Id";
 import { refreshApex } from "@salesforce/apex";
@@ -73,6 +74,8 @@ export default class LeaveApplication extends LightningElement {
     @track leaveType;
     @track leaveStatus;
     @track leaveDayCount;
+    @track leaveBalance;
+    @track leaveBalanceAfterApproval;
     @api refreshGrid() {
         refreshApex(this.myLeavesWireResult);
     }
@@ -85,6 +88,12 @@ export default class LeaveApplication extends LightningElement {
         this.leaveType = "";
         this.leaveStatus = "Draft";
         this.leaveDayCount = "";
+        getLeaveBalance()
+            .then(result => {
+                console.log("Result is ", result);
+                this.leaveDayCount = result.currentBalance;
+                this.error = undefined;}
+            );
     }
 
     @wire(getMyLeaves)
@@ -172,5 +181,6 @@ export default class LeaveApplication extends LightningElement {
                 this.error = error;
                 this.leaveDayCount = undefined;
             });
+            this.leaveBalanceAfterApproval  = this.leaveBalance - this.leaveDayCount;
     }
 }
